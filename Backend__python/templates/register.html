@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% block title%} Register {% endblock title%}
+ {% block body %}
+<div class="container my-3">
+   <form action=" " method="post">
+    <div class="mb-3">
+      <label for="example" class="form-label">Username</label>
+      <input
+        type="text"
+        class="form-control"
+        id="example"
+        aria-describedby="emailHelp"
+        name ="username"
+        Required
+      />
+      
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputPassword1" class="form-label">Password</label>
+      <input type="password" class="form-control" name ="password" id="exampleInputPassword1" Required />
+    </div>
+    <div class="mb-3">
+        <label for="user_type" class="form-label">You are Student/Librarian</label>
+        <select class="form-select" aria-label="Default select example" name = "user_type" ,id ="user_type" Required>
+           
+            <option value="LIBRARIAN">LIBRARIAN</option>
+            <option value="MEMBER">MEMBER</option>
+            
+          </select>
+        
+      </div>
+
+      <div class="mb-3">
+        <p> Already Register? <a href = "/login"> login <a></p>
+
+        
+      </div>
+
+
+    
+    
+    <button type="submit" class="btn btn-primary">Register</button>
+  </form>
+</div>
+
+{% endblock body %}

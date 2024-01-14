@@ -1,0 +1,41 @@
+{% extends 'base.html'%} {% block title%} AllBook {% endblock title%} 
+{% block body %}
+<div class="container my-5">
+ 
+   <div class="alert alert-primary" role="alert"><a href ="/delete_account/{{username}}/">Delete Account  </a></div>
+
+  {% if total_books %}
+  
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">S.NO</th>
+        <th scope="col">Title</th>
+        <th scope="col">Author</th>
+        <th scope="col">Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for book in total_books%}
+      <tr>
+        <th scope="row">{{loop.index}}</th>
+        <td>{{book.title}}</td>
+        <td>{{book.author}}</td>
+        <td>
+          {% if book.status  =='available' %}
+          <a href="/borrow/{{book.isgn}}/">Borrow </a>
+
+          {% elif  book.status =='borrow' %}
+          <a href="/returnB/{{book.isgn}}/"> Available</a>
+          {% endif %}
+        </td>
+      </tr>
+
+      {% endfor %}
+    </tbody>
+  </table>
+
+  {% endif%}
+</div>
+{% endblock body%}

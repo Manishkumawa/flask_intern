@@ -1,0 +1,83 @@
+{% extends 'base.html' %} {% block title %} Books {% endblock title%} {% block body
+%}
+<div class="container my-3">
+  <h3>Add New Books</h3>
+  <form action="" method="post">
+    <div class="mb-3">
+      <label for="example" class="form-label"> Title</label>
+      <input
+        type="text"
+        class="form-control"
+        id="example"
+        name="title"
+        aria-describedby="emailHelp"
+      />
+    </div>
+    <div class="mb-3">
+      <label for="example2" class="form-label"> Author</label>
+      <input
+        type="text"
+        class="form-control"
+        id="example2"
+        name="author"
+        aria-describedby="emailHelp"
+      />
+    </div>
+    <div class="mb-3">
+      <label for="example3" class="form-label"> ISBN:</label>
+      <input
+        type="text"
+        class="form-control"
+        id="example3"
+        name="isbn"
+        aria-describedby="emailHelp"
+      />
+    </div>
+    <div class="mb-3">
+      <label for="example4" class="form-label"> Quantity</label>
+      <input
+        type="number"
+        class="form-control"
+        id="example4"
+        name="quantity"
+        aria-describedby="emailHelp"
+      />
+    </div>
+    
+    <button type="submit" class="btn btn-primary">Add Book</button>
+  </form>
+</div>
+
+<div class="container my-5">
+  {% if allbooks %}
+  
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">S.NO</th>
+        <th scope="col">Title</th>
+        <th scope="col">Author</th>
+        <th scope="col">ISBN:</th>
+        <th scope="col">Quantity</th>
+        <th scope = "col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for a in allbooks%}
+      <tr>
+        <th scope="row">{{loop.index}}</th>
+        <td>{{a.title}}</td>
+        <td>{{a.author}}</td>
+        <td>{{a.isgn}}</td>
+        <td>{{a.quantity}}</td>
+        <td> <a href = "/deleteB/{{a.isgn}}/" type="button" class="btn btn-primary mx-2">Delete</a>
+            <a href = "/updateB/{{a.isgn}}/" type="button" class="btn btn-primary mx-2">Update</a>
+        </td>
+      </tr>
+
+      {% endfor %}
+    </tbody>
+  </table>
+  {% endif %}
+</div>
+{% endblock body%}

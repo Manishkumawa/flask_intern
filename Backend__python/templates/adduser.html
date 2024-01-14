@@ -1,0 +1,57 @@
+{% extends 'base.html'%}
+{% block title%} AddUser {% endblock title%}
+{% block body %}
+<div class="container my-5">
+    <h2> Add User</h2>
+    <form action=" " method="post">
+        <div class="mb-3">
+          <label for="example" class="form-label">Username</label>
+          <input
+            type="text"
+            class="form-control"
+            id="example"
+            aria-describedby="emailHelp"
+            name ="username"
+            Required
+          />
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputPassword1" class="form-label">Password</label>
+          <input type="password" class="form-control" name ="password" id="exampleInputPassword1" Required />
+        </div>
+        <button type="submit" class="btn btn-primary">ADD</button>
+    </form>
+    
+    <div class ="container my-5">
+        {% if allUser %}
+       
+        <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">S.NO</th>
+                <th scope="col">Username</th>
+                <th scope="col">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for auser in allUser %}
+              <tr>
+                <th scope="row">{{loop.index}}</th>
+                <td>{{auser.username}}</td>
+                <td>
+                    <td> <a href = "/deleteUser/{{auser.username}}" type="button" class="btn btn-primary mx-2">Delete</a>
+                        <a href = "/updateUser/{{auser.username}}" type="button" class="btn btn-primary mx-2">Update</a>
+                    </td>
+                </td> 
+              </tr>
+              {% endfor %}
+            </tbody>
+        </table>
+        {% endif %}
+      </div>
+
+</div>
+{% endblock body %}
+        
+          
+    
